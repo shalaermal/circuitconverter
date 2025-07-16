@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400&display=swap');
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f1f5f9;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.container {
+  max-width: 720px;
+  margin: auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+  text-align: center;
+  color: #222;
+  margin-bottom: 25px;
+}
+
+label {
+  font-weight: 600;
+  margin-top: 16px;
+  display: block;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+textarea,
+input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  font-size: 0.95em;
+  background-color: #f9fafb;
+  color: #111;
+}
+
+button {
+  background: linear-gradient(to right, #10b981, #059669); /* Green gradient */
+  color: white;
+  padding: 6px 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.1s ease-in-out;
+}
+
+button:hover {
+  background: linear-gradient(to right, #059669, #047857);
+  transform: scale(1.02);
+}
+
+pre {
+  background-color: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-family: 'Fira Code', 'Courier New', Courier, monospace;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  flex: 1;
+  font-size: 0.75em; /* smaller font */
+  color: #1e293b;
+  border: 1px solid #e5e7eb;
+}
+
+
+hr {
+  margin: 30px 0;
+  border: 0;
+  height: 1px;
+  background: #ddd;
+}

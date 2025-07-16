@@ -4,143 +4,26 @@
   <meta charset="UTF-8" />
   <title>Circuit Name Converter</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f7f9;
-      margin: 0;
-      padding: 20px;
-    }
-    .container {
-      max-width: 800px;
-      margin: auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      color: #333;
-    }
-    label {
-      font-weight: bold;
-      margin-top: 15px;
-      display: block;
-      color: #444;
-    }
-    textarea, input[type="date"] {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      font-size: 1em;
-      box-sizing: border-box;
-    }
-    button {
-      background-color: #007BFF;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1em;
-      transition: background-color 0.3s ease;
-    }
-    button:hover {
-      background-color: #0056b3;
-    }
-    pre {
-      background-color: #eef2f5;
-      padding: 15px;
-      border-radius: 8px;
-      font-family: 'Courier New', Courier, monospace;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-    hr {
-      margin: 40px 0;
-      border: 0;
-      height: 1px;
-      background: #ddd;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="container">
-  <h2>Circuit Name Converter</h2>
+  <div class="container">
+    <h2>Circuit Name Converter</h2>
 
-  <label for="circuits_with_date">Enter circuit names (each on a new line) for conversion with date:</label>
-  <textarea id="circuits_with_date" rows="6" placeholder="TX/VLXP/601760/001/WINW/"></textarea>
+    <label for="circuits_with_date">Enter circuit names (each on a new line) for conversion with date:</label>
+    <textarea id="circuits_with_date" rows="6" placeholder="TX/VLXP/601760/001/WINW/"></textarea>
 
-  <label for="date">Select Date (defaults to today, MM/DD/YYYY format):</label>
-  <input type="date" id="date">
+    <label for="date">Select Date (defaults to today, MM/DD/YYYY format):</label>
+    <input type="date" id="date" />
 
-  <button onclick="convertWithDate()">Convert with Date (RFC2544)</button>
-  <div id="output_with_date_block" style="display:none;">
-    <label>Result:</label>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <pre id="output_with_date" style="flex: 1; margin: 0;"></pre>
-      <button onclick="copyText('output_with_date')">📋 Copy</button>
+    <button onclick="convertWithDate()">Convert with Date (RFC2544)</button>
+
+    <div id="output_with_date_block" style="display:none;">
+      <label>Result:</label>
+      <div id="output_lines_with_date"></div>
     </div>
   </div>
 
-  <hr>
-
-  <label for="circuits_without_date">Enter circuit names (each on a new line) for simple conversion:</label>
-  <textarea id="circuits_without_date" rows="6" placeholder="TX/VLXP/601760/001/WINW/"></textarea>
-
-  <button onclick="convertWithoutDate()">Convert without Date</button>
-  <div id="output_without_date_block" style="display:none;">
-    <label>Result:</label>
-    <pre id="output_without_date"></pre>
-  </div>
-</div>
-
-<script>
-  // Set today's date as default
-  document.getElementById("date").valueAsDate = new Date();
-
-  function convertLine(line, withDate = false, dateStr = '') {
-    let base = line.trim().split('/').slice(0, -1).join('/');
-    let converted = base.replace(/\s+/g, '').replace(/\//g, '.').replace(/\.+$/, '');
-    converted = converted.split('.').filter(Boolean).join('.');
-    if (withDate && dateStr) {
-      try {
-        const date = new Date(dateStr);
-        const formatted = `RFC2544.${String(date.getMonth() + 1).padStart(2, '0')}.${String(date.getDate()).padStart(2, '0')}.${date.getFullYear()}`;
-        return `${converted}.${formatted}`;
-      } catch (e) {
-        return `${converted}.INVALID_DATE`;
-      }
-    }
-    return converted;
-  }
-
-  function convertWithDate() {
-    const input = document.getElementById('circuits_with_date').value.trim();
-    const dateStr = document.getElementById('date').value;
-    const lines = input.split('\n').filter(line => line.trim() !== '');
-    const result = lines.map(line => convertLine(line, true, dateStr)).join('\n');
-    document.getElementById('output_with_date').innerText = result;
-    document.getElementById('output_with_date_block').style.display = 'block';
-  }
-
-  function convertWithoutDate() {
-    const input = document.getElementById('circuits_without_date').value.trim();
-    const lines = input.split('\n').filter(line => line.trim() !== '');
-    const result = lines.map(line => convertLine(line)).join('\n');
-    document.getElementById('output_without_date').innerText = result;
-    document.getElementById('output_without_date_block').style.display = 'block';
-  }
-
-  function copyText(elementId) {
-    const text = document.getElementById(elementId).innerText;
-    navigator.clipboard.writeText(text).then(() => {
-      alert('Copied to clipboard!');
-    });
-  }
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
