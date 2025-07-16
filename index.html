@@ -15,9 +15,10 @@
     <textarea id="circuits_with_date" rows="6" placeholder="TX/VLXP/601760/001/WINW/"></textarea>
 
     <label for="date">Select Date (defaults to today, MM/DD/YYYY format):</label>
-    <input type="date" id="date" />
-
-    <button onclick="convertWithDate()">Convert with Date (RFC2544)</button>
+    <div class="input-button-row">
+      <input type="date" id="date" />
+      <button onclick="convertWithDate()">Convert with Date</button>
+    </div>
 
     <div id="output_with_date_block" style="display:none;">
       <label>Result:</label>

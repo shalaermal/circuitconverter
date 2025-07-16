@@ -30,8 +30,7 @@ label {
   margin-bottom: 6px;
 }
 
-textarea,
-input[type="date"] {
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #d1d5db;
@@ -42,17 +41,40 @@ input[type="date"] {
   color: #111;
 }
 
-button {
-  background: linear-gradient(to right, #10b981, #059669); /* Green gradient */
-  color: white;
-  padding: 6px 14px;
-  border: none;
+.input-button-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+input[type="date"] {
+  width: 160px;
+  height: 38px;
+  padding: 6px 12px;
+  border: 1px solid #d1d5db;
   border-radius: 8px;
-  cursor: pointer;
   font-size: 0.85em;
+  background-color: #f9fafb;
+  color: #111;
+  box-sizing: border-box;
+}
+
+button {
+  background: linear-gradient(to right, #10b981, #059669);
+  color: white;
+  padding: 4px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.75em;
   font-weight: 500;
+  height: 30px;
+  display: inline-flex;
+  align-items: center;
   transition: background 0.3s ease, transform 0.1s ease-in-out;
 }
+
 
 button:hover {
   background: linear-gradient(to right, #059669, #047857);
@@ -68,11 +90,10 @@ pre {
   word-wrap: break-word;
   margin: 0;
   flex: 1;
-  font-size: 0.75em; /* smaller font */
+  font-size: 0.75em;
   color: #1e293b;
   border: 1px solid #e5e7eb;
 }
-
 
 hr {
   margin: 30px 0;

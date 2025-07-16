@@ -1,3 +1,4 @@
+// Set today's date by default
 document.getElementById("date").valueAsDate = new Date();
 
 function convertLine(line, withDate = false, dateStr = "") {
@@ -9,13 +10,13 @@ function convertLine(line, withDate = false, dateStr = "") {
     try {
       const date = new Date(dateStr);
       const formatted = `RFC2544.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}.${date.getFullYear()}`;
-      return `${converted}.${formatted}`;
+      return `${converted}.${formatted}.txt`;
     } catch (e) {
-      return `${converted}.INVALID_DATE`;
+      return `${converted}.INVALID_DATE.txt`;
     }
   }
 
-  return converted;
+  return `${converted}.txt`;
 }
 
 function convertWithDate() {
@@ -39,7 +40,7 @@ function convertWithDate() {
     pre.innerText = converted;
 
     const btn = document.createElement("button");
-    btn.innerText = "📋 Copy";
+    btn.innerText = "Copy";
     btn.onclick = () => {
       navigator.clipboard.writeText(pre.innerText);
     };
