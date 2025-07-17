@@ -52,3 +52,9 @@ function convertWithDate() {
 
   document.getElementById("output_with_date_block").style.display = "block";
 }
+document.getElementById("circuits_with_date").addEventListener("keydown", function (event) {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault(); // prevent newline
+    convertWithDate();      // trigger conversion
+  }
+});
