@@ -8,8 +8,9 @@ function convertLine(line, withDate = false, dateStr = "") {
 
   if (withDate && dateStr) {
     try {
-      const date = new Date(dateStr);
-      const formatted = `RFC2544.${String(date.getMonth() + 1).padStart(2, "0")}.${String(date.getDate()).padStart(2, "0")}.${date.getFullYear()}`;
+      // Use input date string directly without offset issue
+      const [year, month, day] = dateStr.split("-");
+      const formatted = `RFC2544.${month}.${day}.${year}`;
       return `${converted}.${formatted}.txt`;
     } catch (e) {
       return `${converted}.INVALID_DATE.txt`;
@@ -52,6 +53,7 @@ function convertWithDate() {
 
   document.getElementById("output_with_date_block").style.display = "block";
 }
+
 document.getElementById("circuits_with_date").addEventListener("keydown", function (event) {
   if (event.key === "Enter" && !event.shiftKey) {
     event.preventDefault(); // prevent newline
