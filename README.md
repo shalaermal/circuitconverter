@@ -22,6 +22,10 @@ Example output:
 - TX.VLXP.549605.001.WINW.RFC2544.01.14.2026.txt
 - TX.VLXP.549605.002.WINW.RFC2544.01.14.2026.txt
 
+## Screenshot
+
+### Overview
+![Circuit Name Converter Overview](overview.png)
 
 ## Why this exists
 
